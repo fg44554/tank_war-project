@@ -12,7 +12,7 @@ public class TankTankCollider implements Collider {
             if (o21.getRect().intersects(o11.getRect())) {
                 Random random=new Random();
                 o11.back();
-                o11.setDir(TankProp.values()[random.nextInt(8)]);
+                if (random.nextInt(100) > 95) o11.setDir(TankProp.values()[random.nextInt(8)]);
                 o21.back();
 //                o21.setDir(TankProp.values()[random.nextInt(8)]);
                 return false;
