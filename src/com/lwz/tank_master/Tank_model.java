@@ -4,11 +4,10 @@ import com.lwz.WallStrategy.WS1;
 import com.lwz.WallStrategy.WallMod;
 
 import java.awt.*;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Tank_model extends GameObjects {
-    TankClass tank = new TankClass(600, 600, Integer.parseInt((String) PropMgr.get("speed")), TankProp.DOWN,  Group.GOOD);
+    TankClass tank = new TankClass(600, 600, Integer.parseInt((String) PropMgr.get("speed")), TankProp.DOWN, this, Group.GOOD);
     Wall wall=null;
 
     static int tankCount = 0;
@@ -40,7 +39,7 @@ public class Tank_model extends GameObjects {
     private void init() {
         //初始化敌方坦克
         for (int i = 0; i < Integer.parseInt((String) PropMgr.get("initTankCount")); i++) {
-            this.gameObjects.add(new TankClass(250 + i * 80, 200, 1, TankProp.DOWN,  Group.BAD));
+            this.gameObjects.add(new TankClass(350 + i * 80, 200, 1, TankProp.DOWN, this, Group.BAD));
             tankCount++;
         }
 //        //初始化墙
@@ -81,8 +80,8 @@ public class Tank_model extends GameObjects {
 
     public void addTank() {
         Random random = new Random();
-        this.gameObjects.add(new TankClass(random.nextInt(800), random.nextInt(800), 1, TankProp.DOWN, Group.BAD));
+        this.gameObjects.add(new TankClass(random.nextInt(800), random.nextInt(800), 1, TankProp.DOWN, this, Group.BAD));
         tankCount++;
     }
-public TankClass getTank(){return tank;}
+
 }
