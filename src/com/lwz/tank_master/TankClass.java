@@ -1,5 +1,7 @@
 package com.lwz.tank_master;
 
+import jdk.dynalink.beans.StaticClass;
+
 import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +16,7 @@ public class TankClass extends GameObjects implements Tank {
     private TankProp dir;
     int OldX;
     int OldY;
+    int Blood=10;
 
     public TankProp getDir() {
         return dir;
@@ -63,7 +66,12 @@ public class TankClass extends GameObjects implements Tank {
         rect.width = WIDTH;
         rect.height = HEIGHT;
     }
-
+    public  void setBlood(){
+        this.Blood-=1;
+    }
+    public int getBlood(){
+        return Blood;
+    }
     public Integer getX() {
         return x;
     }
@@ -218,9 +226,19 @@ public class TankClass extends GameObjects implements Tank {
     }
 
     public void die() {
+        if(this.getGroup()==Group.GOOD){
+            if(this.getBlood()==0){
+                Tank_model.getInstance().gameObjects.remove(this);
+                Tank_model.tankCount--;
+                Tank_model.getInstance().gameObjects.add(new Explode(this.x, this.y));
+            }else{
+                this.setBlood();
+            }
+        }else {
         Tank_model.getInstance().gameObjects.remove(this);
         Tank_model.tankCount--;
         Tank_model.getInstance().gameObjects.add(new Explode(this.x, this.y));
+        }
 
     }
     private List<TankFireHandler> aa=  Arrays.asList(new TankFireHandler());

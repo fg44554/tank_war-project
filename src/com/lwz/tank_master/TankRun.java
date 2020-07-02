@@ -185,6 +185,9 @@ public class TankRun extends Frame {
                     Tank_model.getInstance().addTank();
 
                     break;
+                case KeyEvent.VK_CONTROL:
+                    Tank_model.getInstance();
+                    break;
                 default:
                     break;
             }

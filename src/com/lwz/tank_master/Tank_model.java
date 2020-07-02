@@ -38,11 +38,13 @@ public class Tank_model extends GameObjects {
     }
 
     private void init() {
+        this.gameObjects.add(tank);
         //初始化敌方坦克
         for (int i = 0; i < Integer.parseInt((String) PropMgr.get("initTankCount")); i++) {
             this.gameObjects.add(new TankClass(250 + i * 80, 200, 1, TankProp.DOWN,  Group.BAD));
             tankCount++;
         }
+
 //        //初始化墙
 //         new WS1().addWall();
             WS1.addWall();
@@ -60,11 +62,14 @@ public class Tank_model extends GameObjects {
         g.drawString("爆炸数量" + bombCount, 100, 60);
         g.drawString("子弹数量" + bulletCount, 100, 80);
         g.drawString("坦克数量" + tankCount, 100, 100);
+        g.drawString("生命" + tank.getBlood(), 100, 120);
+        if(tank.getBlood()==0){
+        g.drawString("你死了" , 500, 500);}
         if (gameObjects.size() == 0) {
             g.drawString("你胜利了", 500, 500);
         }
         g.setColor(c);
-        tank.paint(g);
+//        tank.paint(g);
         for (int i = 0; i < gameObjects.size(); i++) {
             gameObjects.get(i).paint(g);
         }
