@@ -67,7 +67,7 @@ public class BOMB extends GameObjects {
 
         move();
         if (!live) {
-          Tank_model.getInstance().gameObjects.remove(this);
+            Tank_model.getInstance().gameObjects.remove(this);
             Tank_model.bombCount--;
         }
     }

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameObjects {
-    List<GameObjects> gameObjects = new ArrayList<>();
-    int x,y;
+   public List<GameObjects> gameObjects = new ArrayList<>();
+    int x, y;
 
 
     public void paint(Graphics g) {

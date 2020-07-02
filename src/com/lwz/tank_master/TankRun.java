@@ -98,7 +98,7 @@ public class TankRun extends Frame {
                     br = false;
                     break;
                 case KeyEvent.VK_A:
-                    Tank_model.getInstance().tank.fire(Tank_model.getInstance().tank,  new Fire() {
+                    Tank_model.getInstance().tank.fire(Tank_model.getInstance().tank, new Fire() {
                         @Override
                         public void openfire(Tank tank) {
                             TankClass t = (TankClass) tank;
@@ -114,8 +114,8 @@ public class TankRun extends Frame {
                     });
                     break;
                 case KeyEvent.VK_S:
-                    Tank_model.getInstance().tank.fire(Tank_model.getInstance().tank,new Fire() {
-                        
+                    Tank_model.getInstance().tank.fire(Tank_model.getInstance().tank, new Fire() {
+
 
                         @Override
                         public void openfire(Tank tank) {
@@ -124,9 +124,9 @@ public class TankRun extends Frame {
                             int bx = t.x + TankClass.WIDTH / 2 - Bullet.WIDTH / 2;
                             int by = t.y + TankClass.HEIGHT / 2 - Bullet.HEIGHT / 2;
                             for (int i = 0; i < 1; i++) {
-                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, t.getDir(),  2, t.getGroup()));
-                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, t.getDir(),  3, t.getGroup()));
-                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, t.getDir(),  4, t.getGroup()));
+                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, t.getDir(), 2, t.getGroup()));
+                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, t.getDir(), 3, t.getGroup()));
+                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, t.getDir(), 4, t.getGroup()));
                                 Tank_model.bulletCount++;
                             }
 
@@ -134,7 +134,7 @@ public class TankRun extends Frame {
                     });
                     break;
                 case KeyEvent.VK_D:
-                    Tank_model.getInstance().tank.fire(Tank_model.getInstance().tank,  new Fire() {
+                    Tank_model.getInstance().tank.fire(Tank_model.getInstance().tank, new Fire() {
 
 
                         @Override
@@ -146,8 +146,8 @@ public class TankRun extends Frame {
                             if (t.getDir() == TankProp.UP || t.getDir() == TankProp.LEFT || t.getDir() == TankProp.DOWN || t.getDir() == TankProp.RIGHT) {
                                 for (int i = 0; i < 1; i++) {
                                     Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, t.getDir(), 8, t.getGroup()));
-                                    Tank_model.getInstance().gameObjects.add(new Bullet(bx + 40, by - 40, t.getDir(),  8, t.getGroup()));
-                                    Tank_model.getInstance().gameObjects.add(new Bullet(bx - 40, by + 40, t.getDir(),  8, t.getGroup()));
+                                    Tank_model.getInstance().gameObjects.add(new Bullet(bx + 40, by - 40, t.getDir(), 8, t.getGroup()));
+                                    Tank_model.getInstance().gameObjects.add(new Bullet(bx - 40, by + 40, t.getDir(), 8, t.getGroup()));
                                     Tank_model.bulletCount += 3;
                                 }
                             } else {
@@ -166,10 +166,10 @@ public class TankRun extends Frame {
                                 //重复new可以一次发射多个子弹，角度和速度可调节
                                 int bx = t.x + TankClass.WIDTH / 2 - Bullet.WIDTH / 2;
                                 int by = t.y + TankClass.HEIGHT / 2 - Bullet.HEIGHT / 2;
-                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, TankProp.LEFT,  2, t.getGroup()));
+                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, TankProp.LEFT, 2, t.getGroup()));
                                 Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, TankProp.DOWN, 2, t.getGroup()));
-                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, TankProp.RIGHT,  2, t.getGroup()));
-                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, TankProp.UP,  2, t.getGroup()));
+                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, TankProp.RIGHT, 2, t.getGroup()));
+                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, TankProp.UP, 2, t.getGroup()));
                                 Tank_model.bulletCount += 4;
                             }
                         });
@@ -177,7 +177,7 @@ public class TankRun extends Frame {
                     break;
                 case KeyEvent.VK_W:
                     for (int i = 0; i < 10; i++) {
-                        Tank_model.getInstance().tank.fire(Tank_model.getInstance().tank,  new Fire() {
+                        Tank_model.getInstance().tank.fire(Tank_model.getInstance().tank, new Fire() {
                             @Override
                             public void openfire(Tank tank) {
                                 TankClass t = (TankClass) tank;
@@ -207,16 +207,16 @@ public class TankRun extends Frame {
 
                                 }
                                 if (t.getDir() == TankProp.LEFT) {
-                                    Tank_model.getInstance().gameObjects.add(new BOMB(bx - 45, by, t.getDir(),  5));
+                                    Tank_model.getInstance().gameObjects.add(new BOMB(bx - 45, by, t.getDir(), 5));
                                     Tank_model.bombCount++;
                                 } else if (t.getDir() == TankProp.RIGHT) {
-                                    Tank_model.getInstance().gameObjects.add(new BOMB(bx + 45, by, t.getDir(),  5));
+                                    Tank_model.getInstance().gameObjects.add(new BOMB(bx + 45, by, t.getDir(), 5));
                                     Tank_model.bombCount++;
                                 } else if (t.getDir() == TankProp.DOWN) {
-                                    Tank_model.getInstance().gameObjects.add(new BOMB(bx, by + 45, t.getDir(),  5));
+                                    Tank_model.getInstance().gameObjects.add(new BOMB(bx, by + 45, t.getDir(), 5));
                                     Tank_model.bombCount++;
                                 } else if (t.getDir() == TankProp.UP) {
-                                    Tank_model.getInstance().gameObjects.add(new BOMB(bx, by - 45, t.getDir(),  5));
+                                    Tank_model.getInstance().gameObjects.add(new BOMB(bx, by - 45, t.getDir(), 5));
                                     Tank_model.bombCount++;
                                 }
                                 if (t.getDir() == TankProp.UR) {

@@ -12,7 +12,13 @@ public class ColloderChain implements Collider {
         try {
             String colliders1 = (String) PropMgr.get("BTcolliders");
             String colliders2 = (String) PropMgr.get("TTcolliders");
+            String colliders3 = (String) PropMgr.get("BWcolliders");
+//            String colliders4 = (String) PropMgr.get("TWcolliders");
+
             l.add((Collider) Class.forName(colliders1).getDeclaredConstructor().newInstance());
+            l.add((Collider) Class.forName(colliders2).getDeclaredConstructor().newInstance());
+            l.add((Collider) Class.forName(colliders3).getDeclaredConstructor().newInstance());
+
 
 
         } catch (ClassNotFoundException e) {
@@ -44,7 +50,7 @@ public class ColloderChain implements Collider {
     public void collider(Object o1, Object o2) {
         for (int i = 0; i < l.size(); i++) {
             boolean collide = l.get(i).collide(o1, o2);
-            if(!collide)break;
+            if (!collide) break;
         }
     }
 

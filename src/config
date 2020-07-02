@@ -5,3 +5,5 @@ gameSpeed=16
 #colliders
 BTcolliders=com.lwz.tank_master.BulletTankCollider
 TTcolliders=com.lwz.tank_master.TankTankCollider
+BWcolliders=com.lwz.tank_master.BulletWallCollider
+TWcolliders=com.lwz.tank_master.TankWallCollider

@@ -10,6 +10,8 @@ public class TankClass extends GameObjects implements Tank {
     public Integer y;
     private Integer speed;
     private TankProp dir;
+    int OldX;
+    int OldY;
 
     public TankProp getDir() {
         return dir;
@@ -153,11 +155,14 @@ public class TankClass extends GameObjects implements Tank {
         if (this.group == Group.BAD && random.nextInt(100) > 98)
             this.dir = TankProp.values()[random.nextInt(8)];
     }
-
+    public void back() {
+        x = OldX;
+        y = OldY;
+    }
     public void move() {
+        OldX=this.x;
+        OldY=this.y;
         if (!moving) return;
-
-
         switch (dir) {
             case UP:
                 y -= speed;

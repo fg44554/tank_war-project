@@ -26,7 +26,7 @@ public class Bullet extends GameObjects {
     public static Integer HEIGHT = ResourceMgr.bulletD.getHeight();
     public static Integer WIDTH = ResourceMgr.bulletD.getWidth();
 
-    public Bullet(Integer x, Integer y, TankProp dir,  Integer speed, Group group) {
+    public Bullet(Integer x, Integer y, TankProp dir, Integer speed, Group group) {
         this.dir = dir;
         this.x = x;
         this.y = y;
