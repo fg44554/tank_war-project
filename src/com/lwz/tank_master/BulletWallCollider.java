@@ -22,7 +22,8 @@ public class BulletWallCollider implements Collider {
             if(o11.rect.intersects(o21.rect)){
                 Random random=new Random();
                 o11.back();
-                o11.setDir(TankProp.values()[random.nextInt(8)]);
+                if (random.nextInt(100) > 95) o11.setDir(TankProp.values()[random.nextInt(8)]);
+//                o11.setDir(TankProp.values()[random.nextInt(8)]);
                 System.out.println(o21.rect.x+o21.rect.y);
 //                Random random=new Random();
 //                o11.setDir(TankProp.values()[random.nextInt(8)]);

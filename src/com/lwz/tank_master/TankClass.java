@@ -1,6 +1,8 @@
 package com.lwz.tank_master;
 
 import java.awt.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class TankClass extends GameObjects implements Tank {
@@ -19,7 +21,6 @@ public class TankClass extends GameObjects implements Tank {
 
     private boolean moving = true;
     //    private TankRun tankRun=null;
-    Tank_model tm = null;
     public static Integer WIDTH = ResourceMgr.goodtankD.getWidth();
     public static Integer HEIGHT = ResourceMgr.goodtankD.getHeight();
     Rectangle rect = new Rectangle();
@@ -39,7 +40,6 @@ public class TankClass extends GameObjects implements Tank {
 
     private Group group = Group.BAD;
     Random random = new Random();
-    Explode explode = null;
 
     public TankClass() {
     }
@@ -52,12 +52,11 @@ public class TankClass extends GameObjects implements Tank {
         this.group = group;
     }
 
-    public TankClass(Integer x, Integer y, Integer speed, TankProp dir, Tank_model tm, Group group) {
+    public TankClass(Integer x, Integer y, Integer speed, TankProp dir, Group group) {
         this.y = y;
         this.x = x;
         this.speed = speed;
         this.dir = dir;
-        this.tm = tm;
         this.group = group;
         rect.x = this.x;
         rect.y = this.y;
@@ -116,7 +115,7 @@ public class TankClass extends GameObjects implements Tank {
                     //重复new可以一次发射多个子弹，角度和速度可调节
                     int bx = t.x + TankClass.WIDTH / 2 - Bullet.WIDTH / 2;
                     int by = t.y + TankClass.HEIGHT / 2 - Bullet.HEIGHT / 2;
-                    tm.gameObjects.add(new Bullet(bx, by, t.dir, 2, t.group));
+                    Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, t.dir, 2, t.group));
                     Tank_model.bulletCount++;
 
                 }
@@ -219,11 +218,17 @@ public class TankClass extends GameObjects implements Tank {
     }
 
     public void die() {
-        tm.gameObjects.remove(this);
+        Tank_model.getInstance().gameObjects.remove(this);
         Tank_model.tankCount--;
-        tm.gameObjects.add(new Explode(this.x, this.y));
+        Tank_model.getInstance().gameObjects.add(new Explode(this.x, this.y));
 
     }
-
+    private List<TankFireHandler> aa=  Arrays.asList(new TankFireHandler());
+    public void fireHandle(){
+        Event event = new Event(this);
+        for (int i = 0; i <aa.size() ; i++) {
+            aa.get(i).tankFireHandle(event);
+        }
+    }
 
 }
