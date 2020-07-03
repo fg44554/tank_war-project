@@ -9,11 +9,18 @@ import static com.lwz.tank_master.Tank_model.*;
 
 public class WS1  {
     public static void addWall() {
-        getInstance().gameObjects.add(new Wall(200,200,20,80));
-        getInstance().gameObjects.add(new Wall(600,400,40,20));
-        getInstance().gameObjects.add(new Wall(400,240,20,160));
-        getInstance().gameObjects.add(new Wall(440,660,20,80));
-        getInstance().gameObjects.add(new Wall(80,880,20,80));
-        getInstance().gameObjects.add(new Wall(200,220,20,40));
+        getInstance().gameObjects.add(new Wall(0,420,100,100));
+        getInstance().gameObjects.add(new Wall(100,120,100,300));
+        getInstance().gameObjects.add(new Wall(200,120,100,100));
+        getInstance().gameObjects.add(new Wall(200,320,100,100));
+        getInstance().gameObjects.add(new Wall(400,220,100,300));
+        getInstance().gameObjects.add(new Wall(500,120,100,100));
+        getInstance().gameObjects.add(new Wall(600,220,100,100));
+        getInstance().gameObjects.add(new Wall(600,420,100,100));
+        getInstance().gameObjects.add(new Wall(700,520,100,200));
+        getInstance().gameObjects.add(new Wall(200,620,400,100));
+        getInstance().gameObjects.add(new Wall(100,720,100,100));
+        getInstance().gameObjects.add(new Wall(800,520,100,100));
+        getInstance().gameObjects.add(new Wall(800,120,200,100));
     }
 }

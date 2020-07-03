@@ -16,7 +16,7 @@ public class ColloderChain implements Collider {
 //            String colliders4 = (String) PropMgr.get("TWcolliders");
 
             l.add((Collider) Class.forName(colliders1).getDeclaredConstructor().newInstance());
-            l.add((Collider) Class.forName(colliders2).getDeclaredConstructor().newInstance());
+//            l.add((Collider) Class.forName(colliders2).getDeclaredConstructor().newInstance());
             l.add((Collider) Class.forName(colliders3).getDeclaredConstructor().newInstance());
 
 

@@ -37,7 +37,7 @@ public class ResourceMgr {
             missileRU = ImageUtil.rotateImage(bulletU, 45);
             missileLU = ImageUtil.rotateImage(bulletU, -45);
             missileRD = ImageUtil.rotateImage(bulletU, 135);
-            BOMBU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/3.gif"));
+            BOMBU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/ball.png"));
             for (int i = 0; i < 16; i++) {
                 explodes[i] = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/e" + (i + 1) + ".gif"));
             }

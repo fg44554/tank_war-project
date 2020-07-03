@@ -97,7 +97,7 @@ public class TankRun extends Frame {
                 case KeyEvent.VK_RIGHT:
                     br = false;
                     break;
-                case KeyEvent.VK_A:
+                case KeyEvent.VK_Q:
                     Tank_model.getInstance().tank.fire(Tank_model.getInstance().tank, new Fire() {
                         @Override
                         public void openfire(Tank tank) {
@@ -156,7 +156,7 @@ public class TankRun extends Frame {
                         }
                     });
                     break;
-                case KeyEvent.VK_Q:
+                case KeyEvent.VK_A:
                     //执行多个fire方法可增加一次发射的个数==增加了子弹威力
                     for (int i = 0; i < 1; i++) {
                         Tank_model.getInstance().tank.fire(Tank_model.getInstance().tank, new Fire() {
@@ -186,7 +186,9 @@ public class TankRun extends Frame {
 
                     break;
                 case KeyEvent.VK_CONTROL:
-                    Tank_model.getInstance();
+                    TankClass tank = new TankClass(600, 600, Integer.parseInt((String) PropMgr.get("speed")), TankProp.DOWN,  Group.GOOD);
+                    tank.setGroup(Group.GOOD);
+                        Tank_model.getInstance().gameObjects.add(tank);
                     break;
                 default:
                     break;

@@ -1,7 +1,8 @@
 #编辑坦克的各种属性
-initTankCount=20
+initTankCount=1
 speed=3
 gameSpeed=16
+Blood=50
 #colliders
 BTcolliders=com.lwz.tank_master.BulletTankCollider
 TTcolliders=com.lwz.tank_master.TankTankCollider

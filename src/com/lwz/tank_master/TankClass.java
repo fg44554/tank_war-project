@@ -16,7 +16,7 @@ public class TankClass extends GameObjects implements Tank {
     private TankProp dir;
     int OldX;
     int OldY;
-    int Blood=10;
+    int Blood=Integer.parseInt((String) PropMgr.get("Blood"));
 
     public TankProp getDir() {
         return dir;

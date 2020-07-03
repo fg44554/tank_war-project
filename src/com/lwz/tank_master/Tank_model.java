@@ -5,12 +5,13 @@ import com.lwz.WallStrategy.WallMod;
 
 import java.awt.*;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Tank_model extends GameObjects {
     TankClass tank = new TankClass(600, 600, Integer.parseInt((String) PropMgr.get("speed")), TankProp.DOWN,  Group.GOOD);
     Wall wall=null;
-
+        int bo;
     static int tankCount = 0;
     static int bulletCount = 0;
     static int bombCount = 0;
@@ -41,7 +42,7 @@ public class Tank_model extends GameObjects {
         this.gameObjects.add(tank);
         //初始化敌方坦克
         for (int i = 0; i < Integer.parseInt((String) PropMgr.get("initTankCount")); i++) {
-            this.gameObjects.add(new TankClass(250 + i * 80, 200, 1, TankProp.DOWN,  Group.BAD));
+            this.gameObjects.add(new TankClass(150 + i * 80, 950, 1, TankProp.UP,  Group.BAD));
             tankCount++;
         }
 
@@ -63,13 +64,20 @@ public class Tank_model extends GameObjects {
         g.drawString("子弹数量" + bulletCount, 100, 80);
         g.drawString("坦克数量" + tankCount, 100, 100);
         g.drawString("生命" + tank.getBlood(), 100, 120);
+        g.drawString("第" + (bo+1)+"波", 100, 140);
+        if(tankCount==0){
+            for ( bo = 0; bo <(int)100/tank.getBlood()+(int) tank.getBlood()/10; bo++) {
+                Tank_model.getInstance().addTank();
+            }}
+//        collide(gameObjects);
         if(tank.getBlood()==0){
-        g.drawString("你死了" , 500, 500);}
+        g.drawString("你死了,存活了"+bo+"波" , 500, 500);}
         if (gameObjects.size() == 0) {
             g.drawString("你胜利了", 500, 500);
         }
         g.setColor(c);
-//        tank.paint(g);
+//        if(tank.getBlood()>0){tank.paint(g);}else{return;}
+
         for (int i = 0; i < gameObjects.size(); i++) {
             gameObjects.get(i).paint(g);
         }
@@ -86,8 +94,23 @@ public class Tank_model extends GameObjects {
 
     public void addTank() {
         Random random = new Random();
-        this.gameObjects.add(new TankClass(random.nextInt(800), random.nextInt(800), 1, TankProp.DOWN, Group.BAD));
+        this.gameObjects.add(new TankClass(random.nextInt(800), 950, 1, TankProp.UP, Group.BAD));
         tankCount++;
     }
-public TankClass getTank(){return tank;}
+    public TankClass getTank(){return tank;}
+//    public void collide(List<GameObjects> gameObjects){
+//        for (int i = 0; i <this.gameObjects.size() ; i++) {
+//            if(gameObjects.get(i) instanceof Bullet){
+//                Bullet bullet = (Bullet) gameObjects.get(i);
+//                if(this.tank.getRect().intersects(bullet.rect)){
+//                    this.tank.setBlood();
+//                }
+//            }return;
+//
+//
+//        }
+//
+//
+//
+//    }
 }

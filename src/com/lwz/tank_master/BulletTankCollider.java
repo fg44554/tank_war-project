@@ -29,6 +29,20 @@ public class BulletTankCollider implements Collider {
             }
         } else if (o2 instanceof BOMB && o1 instanceof TankClass) {
             collide(o2, o1);
+        }else if(o1 instanceof  BOMB && o2 instanceof  Bullet){
+            BOMB o11 = (BOMB) o1;
+            Bullet o21 = (Bullet) o2;
+            if (o21.getGroup()==Group.GOOD) {
+                return true;
+            }
+            Rectangle rect = new Rectangle(o11.getX(), o11.getY(), o11.WIDTH, o11.HEIGHT);
+            if(rect.intersects(o21.rect)){
+                o21.die();
+                o11.die();
+                return false;
+            }
+        }else if(o2 instanceof  BOMB && o1 instanceof  Bullet){
+            collide(o2,o1);
         }
         return true;
 
