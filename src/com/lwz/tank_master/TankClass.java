@@ -241,7 +241,7 @@ public class TankClass extends GameObjects implements Tank {
         }
 
     }
-    private List<TankFireHandler> aa=  Arrays.asList(new TankFireHandler());
+    private List<FireOberver> aa=  Arrays.asList(new TankFireHandler());
     public void fireHandle(){
         Event event = new Event(this);
         for (int i = 0; i <aa.size() ; i++) {

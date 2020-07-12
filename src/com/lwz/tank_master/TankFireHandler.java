@@ -1,6 +1,8 @@
 package com.lwz.tank_master;
 
-public class TankFireHandler implements FireOberver {
+import java.io.Serializable;
+
+public class TankFireHandler implements FireOberver, Serializable {
 
     @Override
     public void tankFireHandle(Event e) {

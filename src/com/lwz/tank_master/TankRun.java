@@ -74,6 +74,22 @@ public class TankRun extends Frame {
                 case KeyEvent.VK_RIGHT:
                     br = true;
                     break;
+                case KeyEvent.VK_R:
+                    //执行多个fire方法可增加一次发射的个数==增加了子弹威力
+                    for (int J = 0; J < 1; J++) {
+                        Tank_model.getInstance().tank.fire(Tank_model.getInstance().tank, new Fire() {
+                            @Override
+                            public void openfire(Tank tank) {
+                                TankClass t = (TankClass) tank;
+                                //重复new可以一次发射多个子弹，角度和速度可调节
+                                int bx = t.x + TankClass.WIDTH / 2 - Bullet.WIDTH / 2;
+                                int by = t.y + TankClass.HEIGHT / 2 - Bullet.HEIGHT / 2;
+                                Tank_model.getInstance().gameObjects.add(new Bullet(bx, by, t.getDir(), 8, t.getGroup()));
+                                Tank_model.bulletCount += 4;
+                            }
+                        });
+                    }
+                    break;
                 default:
                     break;
             }
@@ -112,6 +128,12 @@ public class TankRun extends Frame {
 
                         }
                     });
+                    break;
+                case KeyEvent.VK_Z:
+                    Tank_model.getInstance().save();
+                    break;
+                case KeyEvent.VK_X:
+                    Tank_model.getInstance().load();
                     break;
                 case KeyEvent.VK_S:
                     Tank_model.getInstance().tank.fire(Tank_model.getInstance().tank, new Fire() {

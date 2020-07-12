@@ -4,11 +4,14 @@ import com.lwz.WallStrategy.WS1;
 import com.lwz.WallStrategy.WallMod;
 
 import java.awt.*;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class Tank_model extends GameObjects {
+
+    File file = new File("C:\\tank_save\\tank.data");
     TankClass tank = new TankClass(600, 600, Integer.parseInt((String) PropMgr.get("speed")), TankProp.DOWN,  Group.GOOD);
     Wall wall=null;
         int bo;
@@ -98,19 +101,43 @@ public class Tank_model extends GameObjects {
         tankCount++;
     }
     public TankClass getTank(){return tank;}
-//    public void collide(List<GameObjects> gameObjects){
-//        for (int i = 0; i <this.gameObjects.size() ; i++) {
-//            if(gameObjects.get(i) instanceof Bullet){
-//                Bullet bullet = (Bullet) gameObjects.get(i);
-//                if(this.tank.getRect().intersects(bullet.rect)){
-//                    this.tank.setBlood();
-//                }
-//            }return;
-//
-//
-//        }
-//
-//
-//
-//    }
+
+    public void save() {
+
+        ObjectOutputStream oos=null;
+
+        try {
+             oos= new ObjectOutputStream(new FileOutputStream(file));
+             oos.writeObject(tank);
+             oos.writeObject(gameObjects);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(oos!=null){oos.close();}
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void load() {
+        ObjectInputStream ois=null;
+
+        try {
+            ois= new ObjectInputStream(new FileInputStream(file));
+            tank= (TankClass) ois.readObject();
+            gameObjects= (List<GameObjects>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(ois!=null){ois.close();}
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
